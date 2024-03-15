@@ -1,21 +1,33 @@
 package ejercicio5;
-
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<Turno> listaTurnos = new ArrayList<>();
+        public static void main(String[] args) {
+            TurnosDAO turnoDAO = new TurnosDAO();
+            String opcion = "";
+            Scanner scanner = new Scanner(System.in);
 
-        listaTurnos.add(new Turno(JOptionPane.showInputDialog(null,"Hora de inicio en la mañana:"), JOptionPane.showInputDialog(null,"Hora fin en la mañana"), "Turno de mañana"));
-        listaTurnos.add(new Turno(JOptionPane.showInputDialog(null,"Hora de inicio en la tarde"),JOptionPane.showInputDialog(null,"Hora fin en la tarde"), "Turno de tarde"));
+            while (!opcion.equalsIgnoreCase("n")) {
+                System.out.println("¿Desea agregar un turno? (s/n)");
+                opcion = scanner.nextLine();
+                if (opcion.equalsIgnoreCase("s")) {
+                    System.out.println("Ingrese la hora de inicio del turno:");
+                    String horaInicio = scanner.nextLine();
+                    System.out.println("Ingrese la hora de fin del turno:");
+                    String horaFin = scanner.nextLine();
+                    System.out.println("Ingrese la descripción del turno:");
+                    String descripcion = scanner.nextLine();
 
-        for (Turno turno : listaTurnos) {
-            System.out.println("Hora de inicio: " + turno.getHoraInicio());
-            System.out.println("Hora de fin: " + turno.getHoraFin());
-            System.out.println("Descripción: " + turno.toString());
-            System.out.println();
+                    turnoDAO.addTurno(new TurnoABS(horaInicio, horaFin, descripcion));
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (TurnoABS turno : turnoDAO.getTurnos()) {
+                sb.append(turno.toString()).append("\n");
+            }
+
+            JOptionPane.showMessageDialog(null, sb.toString(), "Turnos", JOptionPane.INFORMATION_MESSAGE);
         }
-    }
-
 }

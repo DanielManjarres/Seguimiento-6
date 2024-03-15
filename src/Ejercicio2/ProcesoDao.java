@@ -1,7 +1,5 @@
 package Ejercicio2;
 
-import ejercicio3.IEjer3;
-
 import javax.swing.*;
 
 public class ProcesoDao implements IEjer2 {

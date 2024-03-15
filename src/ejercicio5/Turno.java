@@ -1,25 +1,29 @@
 package ejercicio5;
 
 public class Turno {
-    private String horaInicio,horaFin,descripcion;
-    public Turno(String horaInicio, String horaFin, String descripcion) {
+    private int horaInicio;
+    private int horaFin;
+    private String descripcion;
+
+    public Turno(int horaInicio, int horaFin, String descripcion) {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.descripcion = descripcion;}
+        this.descripcion = descripcion;
+    }
 
-    public String getHoraInicio() {
+    public int getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(String horaInicio) {
+    public void setHoraInicio(int horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public String getHoraFin() {
+    public int getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(String horaFin) {
+    public void setHoraFin(int horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -33,6 +37,10 @@ public class Turno {
 
     @Override
     public String toString() {
-        return descripcion;
+        return "Turno{" +
+                "horaInicio=" + horaInicio +
+                ", horaFin=" + horaFin +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
     }
 }
